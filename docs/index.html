@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cloud Efficiency Metrics</title>
+<meta name="description" content="Drop in a FinOps FOCUS cloud bill and see cost, waste, savings targets and anomalies. Runs in your browser; nothing is uploaded.">
+<style>
+:root{
+  --bg:#f6f7f9;--panel:#fff;--fg:#1d2330;--muted:#667085;--line:#e4e7ec;--soft:#f0f2f5;
+  --accent:#2563a8;--save:#0f8a6a;--bad:#c62828;--warn:#b26a00;--target:#1d2330;--bar:#98a2b3;
+  --c1:#2563a8;--c2:#7c3aed;--c3:#0f8a6a;--c4:#c2410c;--c5:#0e7490;--c6:#a16207;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#12151b;--panel:#1a1e26;--fg:#e8eaee;--muted:#9aa3b2;--line:#2a303b;--soft:#222834;
+  --accent:#6aa3e6;--save:#34c39a;--bad:#f07171;--warn:#f0b35a;--target:#e8eaee;--bar:#5b6475;
+  --c1:#6aa3e6;--c2:#a98bf5;--c3:#34c39a;--c4:#f08a4b;--c5:#3fb8d0;--c6:#d6a945;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1120px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-right)) 48px max(16px,env(safe-area-inset-left))}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:18px}
+h1{font-size:26px;margin:0;letter-spacing:-.01em} h2{font-size:16px;margin:0 0 4px}
+.sub{color:var(--muted);margin:2px 0 0;max-width:70ch}
+.links a{color:var(--accent);text-decoration:none;font-size:14px;margin-left:14px}
+.links a:hover{text-decoration:underline}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-width:0}
+.note{color:var(--muted);font-size:13px;margin:0 0 12px}
+section{margin-top:18px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:18px}
+/* upload */
+#drop{border:2px dashed var(--line);border-radius:10px;padding:22px;text-align:center;transition:border-color .15s,background .15s;cursor:pointer}
+#drop.over{border-color:var(--accent);background:var(--soft)}
+#drop strong{display:block;font-size:16px;margin-bottom:4px}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:14px}
+.slot{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px}
+.slot b{display:block;font-size:13px}
+.slot span{color:var(--muted)}
+.slot.ok{border-color:var(--save)} .slot.ok span{color:var(--save)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+button{font:inherit;font-size:14px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--fg);padding:8px 14px;cursor:pointer}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.privacy{font-size:13px;color:var(--muted)}
+#status{font-size:14px;margin:16px 0 0;padding:10px 14px;border-radius:8px;background:var(--soft)}
+#status.err{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:2px}
+.tile .l{font-size:12px;color:var(--muted)} .tile .v{font-size:24px;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tile .t{font-size:12px;color:var(--save)}
+/* tables */
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+#summary td:first-child,#platforms td:first-child{white-space:normal;min-width:150px}
+th{font-size:12px;color:var(--muted);font-weight:500}
+th.sort{cursor:pointer;user-select:none} th.sort:hover{color:var(--fg)}
+td.n,th.n{text-align:right}
+.pill{display:inline-block;font-size:12px;border-radius:999px;padding:1px 8px;background:var(--soft)}
+.pill.bad{color:var(--bad)} .pill.ok{color:var(--save)} .pill.warn{color:var(--warn)}
+.tablebox{max-height:420px;overflow:auto;border:1px solid var(--line);border-radius:8px}
+.tablebox th{position:sticky;top:0;background:var(--panel)}
+input[type=search],select{font:inherit;font-size:14px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg)}
+/* charts */
+svg{display:block;width:100%;height:auto}
+svg text{fill:var(--muted);font-size:11px;font-family:inherit}
+svg .ink{fill:var(--fg)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+ul.checks{list-style:none;padding:0;margin:0;font-size:14px}
+ul.checks li{padding:6px 0;border-bottom:1px solid var(--line)}
+footer{color:var(--muted);font-size:13px;margin-top:32px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Cloud Efficiency Metrics</h1>
+      <p class="sub">Drop in a cloud bill and see what you spend, what you waste, a target you can hit, and what changed.</p>
+    </div>
+    <nav class="links"><a href="report.html">Full report</a><a id="repo" href="https://github.com/SaiAloor/cloud-efficiency-metrics">Code on GitHub</a></nav>
+  </header>
+
+  <div class="card">
+    <div id="drop" tabindex="0" role="button" aria-label="Choose billing files">
+      <strong>Drop your FOCUS billing export here</strong>
+      <span class="note">CSV or CSV.GZ. You can drop several files at once and each one is matched to its slot by its columns.</span>
+    </div>
+    <input type="file" id="picker" multiple accept=".csv,.gz" hidden>
+    <div class="slots" id="slots"></div>
+    <div class="row">
+      <button class="primary" id="run" disabled>Analyze my files</button>
+      <button id="sample">Load the sample bill</button>
+      <span class="privacy">Your files stay in this browser. Nothing is uploaded anywhere.</span>
+    </div>
+    <p id="status">Loading the sample bill…</p>
+  </div>
+
+  <div id="results" hidden>
+    <section id="banner" hidden></section>
+
+    <section class="tiles" id="tiles"></section>
+
+    <section class="grid2">
+      <div class="card">
+        <h2>Cost to target</h2>
+        <p class="note">Each saving is weighted by how likely it is to happen (60% to 90%). The target is what's left.</p>
+        <div id="waterfall"></div>
+      </div>
+      <div class="card">
+        <h2>Savings found</h2>
+        <p class="note" id="skipped"></p>
+        <div class="scroll" id="summary"></div>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <h2>Platforms</h2>
+        <p class="note">Rule coverage is the share of cost a savings rule can check. Low coverage means "not checked," not "no waste."</p>
+        <div class="scroll" id="platforms"></div>
+      </div>
+      <div class="card">
+        <h2>Teams</h2>
+        <p class="note">Gray is cost with no savings found. Red is identified savings.</p>
+        <div id="teams"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Monthly trend</h2>
+      <p class="note" id="trendnote"></p>
+      <div id="trend"></div><div class="legend" id="trendlegend"></div>
+    </section>
+
+    <section class="card">
+      <h2>Anomalies</h2>
+      <p class="note" id="anomnote"></p>
+      <div class="row" style="margin-top:0"><label for="series" class="note" style="margin:0">Series</label><select id="series"></select></div>
+      <div id="anomchart"></div>
+      <div class="scroll" id="anomtable"></div>
+    </section>
+
+    <section class="card">
+      <h2>Every recommendation</h2>
+      <div class="row" style="margin-top:4px;margin-bottom:10px">
+        <input type="search" id="q" placeholder="Filter by resource, team or action" aria-label="Filter recommendations">
+        <button id="csv">Download as CSV</button>
+      </div>
+      <div class="tablebox" id="opps"></div>
+    </section>
+
+    <section class="card">
+      <h2>Data checks</h2>
+      <ul class="checks" id="checks"></ul>
+    </section>
+  </div>
+
+  <footer>Built by Sai Soumya Aloor. The sample bill is simulated, with problems planted on purpose. Calculations match the Python pipeline in the repository, checked by its tests.</footer>
+</main>
+
+<script src="engine.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const SLOTS = [
+    { key: "bill", name: "Billing export", need: "required", match: c => c.includes("EffectiveCost") && c.includes("ChargeCategory") },
+    { key: "telemetry", name: "Utilization", need: "for machine and GPU rules", match: c => c.includes("cpu_avg") || c.includes("gpu_avg") },
+    { key: "inventory", name: "Inventory", need: "for storage and disk rules", match: c => c.includes("storage_tier") || c.includes("attached") },
+    { key: "drivers", name: "Business volume", need: "for unit cost", match: c => c.includes("streaming_hours") },
+    { key: "invoices", name: "Invoices", need: "for the invoice check", match: c => c.includes("InvoiceTotal") },
+  ];
+  const SAMPLE = { bill: "billing_focus.csv.gz", telemetry: "telemetry.csv.gz", inventory: "inventory.csv", drivers: "drivers.csv", invoices: "invoices.csv" };
+  let files = {}, lastResult = null, sourceLabel = "";
+
+  const fmt = {
+    money: (v, d = 0) => (v < 0 ? "-$" : "$") + Math.abs(v).toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d }),
+    k: v => "$" + (v / 1000).toLocaleString("en-US", { maximumFractionDigits: v >= 100000 ? 0 : 1 }) + "K",
+    pct: (v, d = 1) => Number.isFinite(v) ? (v * 100).toFixed(d) + "%" : "n/a",
+  };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const PAL = ["--c1", "--c2", "--c3", "--c4", "--c5", "--c6"];
+
+  // ---------- files ----------
+  async function readFile(blob, name) {
+    const buf = new Uint8Array(await blob.arrayBuffer());
+    if (buf[0] === 0x1f && buf[1] === 0x8b) {
+      const stream = new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"));
+      return await new Response(stream).text();
+    }
+    return new TextDecoder().decode(buf);
+  }
+  function header(text) {
+    const line = text.slice(0, text.indexOf("\n") >>> 0 || 2000);
+    return CostEngine.parseCSV(line + "\n").columns;
+  }
+  function renderSlots() {
+    $("slots").innerHTML = SLOTS.map(s => {
+      const f = files[s.key];
+      return `<div class="slot ${f ? "ok" : ""}"><b>${s.name}</b><span>${f ? esc(f.name) : s.need}</span></div>`;
+    }).join("");
+    $("run").disabled = !(files.bill && files.bill.user);
+  }
+  async function addFiles(list) {
+    const unknown = [];
+    for (const f of list) {
+      const text = await readFile(f, f.name);
+      const slot = SLOTS.find(s => s.match(header(text)));
+      if (slot) {
+        if (Object.values(files).some(x => !x.user)) files = {};
+        files[slot.key] = { name: f.name, text, user: true };
+      } else unknown.push(f.name);
+    }
+    renderSlots();
+    setStatus(unknown.length ? `Couldn't tell what ${unknown.join(", ")} is. A billing export needs the FOCUS columns, such as EffectiveCost and ChargeCategory.` : "Files ready. Click Analyze my files.", !!unknown.length);
+  }
+  async function loadSample() {
+    setStatus("Loading the sample bill…");
+    files = {};
+    for (const [k, name] of Object.entries(SAMPLE)) {
+      const r = await fetch("sample/" + name);
+      if (!r.ok) throw new Error("couldn't load sample/" + name);
+      files[k] = { name, text: await readFile(await r.blob(), name), user: false };
+    }
+    renderSlots();
+    sourceLabel = "the sample bill (simulated)";
+    run();
+  }
+  function setStatus(msg, err) { $("status").textContent = msg; $("status").className = err ? "err" : ""; }
+
+  function run() {
+    const input = Object.fromEntries(Object.entries(files).map(([k, v]) => [k, v.text]));
+    let r;
+    try { r = CostEngine.analyze(input); } catch (e) { setStatus("Couldn't analyze these files: " + e.message, true); return; }
+    if (!r.company) {
+      setStatus("This doesn't look like a FOCUS billing export. " + r.checks.map(c => c.detail).join(" "), true);
+      $("results").hidden = true; return;
+    }
+    if (files.bill.user) sourceLabel = files.bill.name;
+    lastResult = r;
+    setStatus(`Showing ${sourceLabel}. Window: ${r.company.window}. ${r.checks.filter(c => c.passed).length} of ${r.checks.length} data checks passed.`);
+    render(r);
+  }
+
+  // ---------- render ----------
+  function render(r) {
+    $("results").hidden = false;
+    const c = r.company, failed = r.checks.filter(x => !x.passed && x.level === "error");
+    $("banner").hidden = !failed.length;
+    $("banner").innerHTML = failed.length ? `<div id="status" class="err">${failed.length} data check${failed.length > 1 ? "s" : ""} failed: ${failed.map(f => esc(f.check)).join(", ")}. The numbers below may not be right; see Data checks.</div>` : "";
+    const unit = Number.isFinite(c.cost_per_1k_hours);
+    const tiles = [
+      ["Monthly cost", fmt.money(c.cost), "Last 30 days of the bill"],
+      ["Identified savings", fmt.money(c.waste), `${fmt.money(c.expected_savings)} expected to land`],
+      ["Efficiency", fmt.pct(c.efficiency), `Target ${fmt.pct(c.target_efficiency)}`],
+      unit ? ["Cost per 1,000 hours", "$" + c.cost_per_1k_hours.toFixed(2), `Target $${c.target_cost_per_1k_hours.toFixed(2)}`]
+           : ["Target monthly cost", fmt.money(c.target_cost), "Add business volume for unit cost"],
+      ["Tag coverage", fmt.pct(c.tag_coverage), c.tag_coverage >= 0.95 ? "Meets 95% target" : "Below 95% target"],
+      ["Rule coverage", fmt.pct(c.rule_coverage), "Share of cost a rule can check"],
+    ];
+    $("tiles").innerHTML = tiles.map(([l, v, t]) => `<div class="tile"><span class="l">${l}</span><span class="v">${v}</span><span class="t" style="color:var(--muted)">${t}</span></div>`).join("");
+
+    waterfall(c, r.summary);
+    $("skipped").textContent = r.skippedRules.length ? "Not run without more files: " + r.skippedRules.join(", ") + "." : "All six rules ran.";
+    $("summary").innerHTML = table(r.summary, [["label", "Opportunity"], ["resources", "Resources", "n"], ["monthly_savings", "Found", "n", v => fmt.money(v)],
+      ["expected_savings", "Expected", "n", v => fmt.money(v)]]);
+    $("platforms").innerHTML = table(r.platforms, [["name", "Platform"], ["cost", "Cost", "n", v => fmt.money(v)], ["waste", "Savings", "n", v => fmt.money(v)],
+      ["efficiency", "Efficiency", "n", (v, row) => row.rule_coverage === 0 ? '<span class="pill warn">not checked</span>' : fmt.pct(v)],
+      ["rule_coverage", "Coverage", "n", v => fmt.pct(v, 0)]]);
+    teams(r.teams);
+    trend(r.monthly, unit);
+    anomalySection(r);
+    oppsTable();
+    $("checks").innerHTML = r.checks.map(x => `<li><span class="pill ${x.passed ? "ok" : x.level === "error" ? "bad" : "warn"}">${x.passed ? "passed" : x.level === "error" ? "failed" : "warning"}</span> <b>${esc(x.check)}</b>: ${esc(x.detail)}</li>`).join("");
+  }
+
+  function table(rows, cols) {
+    const th = cols.map(([, h, cls]) => `<th class="${cls || ""}">${h}</th>`).join("");
+    const body = rows.map(row => "<tr>" + cols.map(([k, , cls, f]) => `<td class="${cls || ""}">${f ? f(row[k], row) : esc(row[k])}</td>`).join("") + "</tr>").join("");
+    return `<table><thead><tr>${th}</tr></thead><tbody>${body}</tbody></table>`;
+  }
+
+  function waterfall(c, summary) {
+    const W = 640, H = 300, m = { t: 22, r: 8, b: 46, l: 52 };
+    const SHORT = { idle_compute: "Idle machines", orphaned_volume: "Unattached disks", stale_storage: "Unread storage",
+      oversized_compute: "Oversized machines", underused_gpu: "Underused GPUs", commitment_gap: "Commitment gaps" };
+    const steps = summary.map(s => ({ label: SHORT[s.type] || s.label, v: s.expected_savings }));
+    const bars = [{ label: "Current", v: c.cost, kind: "total" }, ...steps, { label: "Target", v: c.target_cost, kind: "target" }];
+    const lo = c.target_cost * 0.85, hi = c.cost * 1.03;
+    const y = v => m.t + (H - m.t - m.b) * (1 - (v - lo) / (hi - lo));
+    const bw = (W - m.l - m.r) / bars.length;
+    let level = c.cost, out = "";
+    for (let i = 0; i <= 4; i++) { const v = lo + (hi - lo) * i / 4; out += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="${css("--line")}"/><text x="${m.l - 6}" y="${y(v) + 4}" text-anchor="end">${fmt.k(v)}</text>`; }
+    bars.forEach((b, i) => {
+      const x = m.l + i * bw + bw * 0.15, w = bw * 0.7;
+      let top, bot, col, lab;
+      if (b.kind === "total") { top = y(b.v); bot = y(lo); col = css("--bar"); lab = fmt.k(b.v); }
+      else if (b.kind === "target") { top = y(b.v); bot = y(lo); col = css("--target"); lab = fmt.k(b.v); }
+      else { top = y(level); bot = y(level - b.v); level -= b.v; col = css("--save"); lab = "-" + fmt.k(b.v); }
+      out += `<rect x="${x}" y="${top}" width="${w}" height="${Math.max(1, bot - top)}" rx="2" fill="${col}"><title>${esc(b.label)}: ${fmt.money(b.v)}</title></rect>`;
+      out += `<text x="${x + w / 2}" y="${top - 5}" text-anchor="middle" class="ink">${lab}</text>`;
+      const words = b.label.split(" ");
+      words.slice(0, 2).forEach((wd, j) => { out += `<text x="${x + w / 2}" y="${H - m.b + 16 + j * 13}" text-anchor="middle">${esc(wd)}</text>`; });
+    });
+    $("waterfall").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Waterfall from current cost to target">${out}</svg>`;
+  }
+
+  function teams(rows) {
+    const W = 460, rowH = 26, m = { t: 6, r: 96, b: 10, l: 112 }, H = m.t + m.b + rows.length * rowH;
+    const max = Math.max(...rows.map(r => r.cost)), x = v => m.l + (W - m.l - m.r) * v / max;
+    let out = "";
+    rows.forEach((r, i) => {
+      const yy = m.t + i * rowH;
+      out += `<text x="${m.l - 8}" y="${yy + 16}" text-anchor="end" class="ink">${esc(r.name)}</text>`;
+      out += `<rect x="${m.l}" y="${yy + 4}" width="${x(r.cost - r.waste) - m.l}" height="16" rx="2" fill="${css("--bar")}"><title>${esc(r.name)}: ${fmt.money(r.cost)}</title></rect>`;
+      out += `<rect x="${x(r.cost - r.waste)}" y="${yy + 4}" width="${Math.max(0, x(r.cost) - x(r.cost - r.waste))}" height="16" rx="2" fill="${css("--bad")}"><title>Savings ${fmt.money(r.waste)}</title></rect>`;
+      out += `<text x="${x(r.cost) + 6}" y="${yy + 16}">${fmt.k(r.cost)} · ${fmt.pct(r.efficiency, 0)}</text>`;
+    });
+    $("teams").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cost and savings by team">${out}</svg>`;
+  }
+
+  function trend(mo, unit) {
+    const rows = mo.rows, cats = mo.categories;
+    const W = 1000, H = 260, m = { t: 16, r: unit ? 64 : 12, b: 28, l: 60 };
+    const max = Math.max(...rows.map(r => r.total)) * 1.1;
+    const y = v => m.t + (H - m.t - m.b) * (1 - v / max);
+    const bw = (W - m.l - m.r) / rows.length;
+    let out = "";
+    for (let i = 0; i <= 4; i++) { const v = max * i / 4; out += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="${css("--line")}"/><text x="${m.l - 6}" y="${y(v) + 4}" text-anchor="end">${fmt.k(v)}</text>`; }
+    rows.forEach((r, i) => {
+      let base = 0; const x = m.l + i * bw + bw * 0.25, w = bw * 0.5;
+      cats.forEach((cat, j) => {
+        const v = r.byCat[cat] || 0;
+        out += `<rect x="${x}" y="${y(base + v)}" width="${w}" height="${y(base) - y(base + v)}" fill="${css(PAL[j % PAL.length])}"><title>${esc(r.month)} ${esc(cat)}: ${fmt.money(v)}</title></rect>`;
+        base += v;
+      });
+      out += `<text x="${x + w / 2}" y="${H - 8}" text-anchor="middle">${esc(r.month)}</text>`;
+    });
+    if (unit) {
+      const vals = rows.map(r => r.cost_per_1k_hours), lo = Math.min(...vals) * 0.9, hi = Math.max(...vals) * 1.08;
+      const y2 = v => m.t + (H - m.t - m.b) * (1 - (v - lo) / (hi - lo));
+      const pts = rows.map((r, i) => [m.l + i * bw + bw / 2, y2(r.cost_per_1k_hours)]);
+      out += `<polyline points="${pts.map(p => p.join(",")).join(" ")}" fill="none" stroke="${css("--fg")}" stroke-width="2"/>`;
+      pts.forEach((p, i) => { out += `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="${css("--fg")}"/><text x="${p[0]}" y="${p[1] - 10}" text-anchor="middle" class="ink">$${vals[i].toFixed(2)}</text>`; });
+      $("trendnote").textContent = "Bars: monthly cost by platform. Line: cost per 1,000 streaming hours.";
+    } else $("trendnote").textContent = "Monthly cost by platform. Add a business volume file to see unit cost.";
+    $("trend").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Monthly cost trend">${out}</svg>`;
+    $("trendlegend").innerHTML = cats.map((c, j) => `<span><i style="background:var(${PAL[j % PAL.length]})"></i>${esc(c)}</span>`).join("");
+  }
+
+  function anomalySection(r) {
+    const flagged = new Set(r.anomalies.map(a => a.team + "\u0001" + a.ServiceCategory));
+    const rawOnly = r.rawAnomalies.filter(a => !r.anomalies.some(b => b.date === a.date && b.team === a.team && b.ServiceCategory === a.ServiceCategory));
+    const opts = r.series.filter(s => flagged.has(s.team + "\u0001" + s.category) || rawOnly.some(a => a.team === s.team && a.ServiceCategory === s.category));
+    const list = opts.length ? opts : r.series.slice().sort((a, b) => b.cost.reduce((x, y) => x + y) - a.cost.reduce((x, y) => x + y)).slice(0, 5);
+    $("series").innerHTML = list.map((s, i) => `<option value="${i}">${esc(s.team)} · ${esc(s.category)}</option>`).join("");
+    $("series").onchange = () => anomalyChart(list[+$("series").value], r);
+    anomalyChart(list[0], r);
+    $("anomnote").textContent = `${r.anomalies.length} day${r.anomalies.length === 1 ? "" : "s"} flagged. Each day is compared with the 28 days before it.` +
+      (rawOnly.length ? ` ${rawOnly.length} raw-dollar alert${rawOnly.length === 1 ? " was" : "s were"} dropped because the spend followed business volume.` : "");
+    $("anomtable").innerHTML = r.anomalies.length ? table(r.anomalies, [["date", "Date"], ["team", "Team"], ["ServiceCategory", "Platform"], ["measure", "Measured as"],
+      ["cost", "Cost", "n", v => fmt.money(v)], ["expected", "Expected", "n", v => fmt.money(v)], ["excess", "Excess", "n", v => fmt.money(v)]]) : "";
+  }
+
+  function anomalyChart(s, r) {
+    if (!s) { $("anomchart").innerHTML = ""; return; }
+    const W = 1000, H = 220, m = { t: 14, r: 12, b: 26, l: 60 };
+    const max = Math.max(...s.cost) * 1.1, min = Math.min(...s.cost) * 0.9;
+    const x = i => m.l + (W - m.l - m.r) * i / Math.max(1, s.dates.length - 1);
+    const y = v => m.t + (H - m.t - m.b) * (1 - (v - min) / (max - min));
+    let out = "";
+    for (let i = 0; i <= 3; i++) { const v = min + (max - min) * i / 3; out += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" stroke="${css("--line")}"/><text x="${m.l - 6}" y="${y(v) + 4}" text-anchor="end">${fmt.money(v)}</text>`; }
+    out += `<polyline points="${s.cost.map((v, i) => x(i) + "," + y(v)).join(" ")}" fill="none" stroke="${css("--accent")}" stroke-width="2" stroke-linejoin="round"/>`;
+    const step = Math.ceil(s.dates.length / 6);
+    s.dates.forEach((d, i) => { if (i % step === 0) out += `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${d.slice(5)}</text>`; });
+    const hit = new Set(r.anomalies.filter(a => a.team === s.team && a.ServiceCategory === s.category).map(a => a.date));
+    const raw = new Set(r.rawAnomalies.filter(a => a.team === s.team && a.ServiceCategory === s.category && !hit.has(a.date)).map(a => a.date));
+    s.dates.forEach((d, i) => {
+      if (hit.has(d)) out += `<circle cx="${x(i)}" cy="${y(s.cost[i])}" r="5" fill="${css("--bad")}"><title>${d}: flagged, ${fmt.money(s.cost[i])}</title></circle>`;
+      if (raw.has(d)) out += `<g stroke="${css("--warn")}" stroke-width="2"><line x1="${x(i) - 5}" y1="${y(s.cost[i]) - 5}" x2="${x(i) + 5}" y2="${y(s.cost[i]) + 5}"/><line x1="${x(i) - 5}" y1="${y(s.cost[i]) + 5}" x2="${x(i) + 5}" y2="${y(s.cost[i]) - 5}"/><title>${d}: raw-dollar alert dropped, spend followed volume</title></g>`;
+    });
+    $("anomchart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Daily cost for ${esc(s.team)} ${esc(s.category)}">${out}</svg>
+      <div class="legend"><span><i style="background:var(--bad);border-radius:50%"></i>Flagged</span>${raw.size ? '<span><i style="background:var(--warn)"></i>Raw-dollar alert dropped (followed volume)</span>' : ""}</div>`;
+  }
+
+  let sortKey = "monthly_savings", sortDir = -1;
+  const OCOLS = [["ResourceId", "Resource"], ["team", "Team"], ["label", "Opportunity"], ["action", "Action"],
+    ["monthly_cost", "Monthly cost", "n", v => fmt.money(v)], ["monthly_savings", "Savings", "n", v => fmt.money(v)],
+    ["confidence", "Confidence", "n", v => fmt.pct(v, 0)]];
+  function oppsTable() {
+    const q = $("q").value.trim().toLowerCase();
+    const rows = lastResult.opportunities.filter(o => !q || [o.ResourceId, o.team, o.label, o.action].join(" ").toLowerCase().includes(q))
+      .sort((a, b) => (a[sortKey] > b[sortKey] ? 1 : a[sortKey] < b[sortKey] ? -1 : 0) * sortDir);
+    const th = OCOLS.map(([k, h, cls]) => `<th class="sort ${cls || ""}" data-k="${k}" aria-sort="${k === sortKey ? (sortDir > 0 ? "ascending" : "descending") : "none"}">${h}${k === sortKey ? (sortDir > 0 ? " ↑" : " ↓") : ""}</th>`).join("");
+    const body = rows.map(row => "<tr>" + OCOLS.map(([k, , cls, f]) => `<td class="${cls || ""}">${f ? f(row[k]) : esc(row[k])}</td>`).join("") + "</tr>").join("");
+    $("opps").innerHTML = `<table><thead><tr>${th}</tr></thead><tbody>${body}</tbody></table>`;
+    $("opps").querySelectorAll("th.sort").forEach(th => th.onclick = () => { const k = th.dataset.k; sortDir = k === sortKey ? -sortDir : -1; sortKey = k; oppsTable(); });
+  }
+
+  function downloadCSV() {
+    const cols = ["ResourceId", "team", "ServiceCategory", "label", "action", "monthly_cost", "monthly_savings", "confidence", "expected_savings"];
+    const q = v => /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : v;
+    const text = [cols.join(","), ...lastResult.opportunities.map(o => cols.map(c => q(typeof o[c] === "number" ? o[c].toFixed(2) : o[c])).join(","))].join("\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([text], { type: "text/csv" }));
+    a.download = "savings_recommendations.csv";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  // ---------- wiring ----------
+  const drop = $("drop");
+  drop.onclick = () => $("picker").click();
+  drop.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); $("picker").click(); } };
+  $("picker").onchange = e => addFiles([...e.target.files]);
+  ["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", e => addFiles([...e.dataTransfer.files]));
+  $("run").onclick = () => run();
+  $("sample").onclick = () => loadSample().catch(e => setStatus("Couldn't load the sample bill: " + e.message, true));
+  $("q").oninput = () => oppsTable();
+  $("csv").onclick = downloadCSV;
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => lastResult && render(lastResult));
+  renderSlots();
+  loadSample().catch(e => setStatus("Couldn't load the sample bill: " + e.message + ". Drop your own files above.", true));
+})();
+</script>
+</body>
+</html>
