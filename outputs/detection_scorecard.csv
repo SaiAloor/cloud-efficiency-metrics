@@ -1,0 +1,6 @@
+type,planted,flagged,correct,precision,recall
+Shut down idle machines,50,44,44,1.0,0.88
+Right-size oversized machines,80,86,80,0.9302325581395349,1.0
+Consolidate underused GPUs,5,5,5,1.0,1.0
+Move unread data to archive,18,18,18,1.0,1.0
+Delete unattached disks,14,14,14,1.0,1.0

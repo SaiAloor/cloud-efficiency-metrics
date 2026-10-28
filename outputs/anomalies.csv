@@ -1,0 +1,5 @@
+date,team,ServiceCategory,measure,cost,expected,excess,z
+2026-08-14,data,Compute,daily cost,5279.27,2214.03,3065.24,61.3
+2026-08-15,data,Compute,daily cost,5288.49,2214.03,3074.46,61.4
+2026-08-16,data,Compute,daily cost,5288.49,2214.03,3074.46,61.4
+2026-08-17,data,Compute,daily cost,5288.49,2214.03,3074.46,61.4

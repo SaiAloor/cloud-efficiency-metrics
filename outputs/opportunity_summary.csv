@@ -1,0 +1,13 @@
+type,resources,monthly_savings,expected_savings,confidence,label,short
+underused_gpu,5,40175.99999999999,24105.599999999995,0.6,Consolidate underused GPUs,"Underused
+GPUs"
+commitment_gap,184,26006.399999999998,20805.12,0.8,Cover steady usage with commitments,"Commitment
+gaps"
+oversized_compute,86,34553.087999999996,20731.852799999997,0.6,Right-size oversized machines,"Oversized
+machines"
+stale_storage,18,24091.49575652174,19273.196605217392,0.8,Move unread data to archive,"Unread
+storage"
+idle_compute,44,18938.879999999997,17044.992,0.9,Shut down idle machines,"Idle
+machines"
+orphaned_volume,14,2469.792,2222.8128,0.9,Delete unattached disks,"Unattached
+disks"

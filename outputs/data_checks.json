@@ -1,0 +1,56 @@
+[
+  {
+    "check": "FOCUS columns present",
+    "passed": true,
+    "level": "error",
+    "detail": "all required columns found"
+  },
+  {
+    "check": "Duplicate line items",
+    "passed": true,
+    "level": "warning",
+    "detail": "removed 300 duplicated line items worth $7,134.73 (days: 2026-09-12)"
+  },
+  {
+    "check": "Invoice match 2026-07",
+    "passed": true,
+    "level": "error",
+    "detail": "billed $923,931.63 vs invoice $923,931.63 (gap $+0.00)"
+  },
+  {
+    "check": "Invoice match 2026-08",
+    "passed": true,
+    "level": "error",
+    "detail": "billed $965,958.39 vs invoice $965,958.39 (gap $-0.00)"
+  },
+  {
+    "check": "Invoice match 2026-09",
+    "passed": true,
+    "level": "error",
+    "detail": "billed $916,558.11 vs invoice $916,558.11 (gap $-0.00)"
+  },
+  {
+    "check": "Commitments fully amortized",
+    "passed": true,
+    "level": "error",
+    "detail": "purchases $736,182.72 vs amortized usage $736,182.72 (gap $+0.00)"
+  },
+  {
+    "check": "Negative cost only on credits",
+    "passed": true,
+    "level": "error",
+    "detail": "ok"
+  },
+  {
+    "check": "Charges inside their billing month",
+    "passed": true,
+    "level": "error",
+    "detail": "ok"
+  },
+  {
+    "check": "Team tag coverage",
+    "passed": true,
+    "level": "warning",
+    "detail": "97.7% of usage cost has a team tag (target 95%)"
+  }
+]

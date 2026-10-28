@@ -1,0 +1,352 @@
+ResourceId,team,ServiceCategory,type,action,monthly_cost,monthly_savings,confidence,expected_savings
+gpu-15,media,AI and Machine Learning,underused_gpu,8 -> 1 GPUs,13824.0,12096.0,0.6,7257.599999999999
+gpu-21,media,AI and Machine Learning,underused_gpu,8 -> 1 GPUs,8985.599999999999,7862.399999999999,0.6,4717.439999999999
+gpu-16,media,AI and Machine Learning,underused_gpu,8 -> 2 GPUs,8985.599999999999,6739.199999999999,0.6,4043.519999999999
+gpu-13,eng-productivity,AI and Machine Learning,underused_gpu,8 -> 2 GPUs,8985.599999999999,6739.199999999999,0.6,4043.519999999999
+gpu-19,media,AI and Machine Learning,underused_gpu,8 -> 2 GPUs,8985.599999999999,6739.199999999999,0.6,4043.519999999999
+bucket-127,personalization,Storage,stale_storage,archive (last read 2025-12-12),6049.7244,4997.598417391305,0.8,3998.078733913044
+bucket-071,studio,Storage,stale_storage,archive (last read 2026-02-23),3751.2244,3098.837547826087,0.8,2479.0700382608698
+bucket-085,data,Storage,stale_storage,archive (last read 2025-12-12),2862.8639,2364.9745260869563,0.8,1891.9796208695652
+vm-0640,playback,Compute,idle_compute,shut down (dev),2211.8399999999997,2211.8399999999997,0.9,1990.6559999999997
+vm-0875,personalization,Compute,idle_compute,shut down (dev),2211.8399999999997,2211.8399999999997,0.9,1990.6559999999997
+bucket-087,eng-productivity,Storage,stale_storage,archive (last read 2026-05-31),2140.6651,1768.3755173913046,0.8,1414.7004139130438
+vm-0492,playback,Compute,oversized_compute,64 -> 16 vCPU,2211.8399999999997,1658.8799999999997,0.6,995.3279999999997
+bucket-024,personalization,Storage,stale_storage,archive (last read 2026-03-04),1763.6018,1456.8884434782608,0.8,1165.5107547826087
+bucket-025,media,Storage,stale_storage,archive (last read 2025-11-25),1736.4035,1434.4202826086955,0.8,1147.5362260869565
+bucket-041,playback,Storage,stale_storage,archive (last read 2025-10-08),1395.133,1152.5011739130434,0.8,922.0009391304347
+vm-0749,media,Compute,idle_compute,shut down (dev),1105.9199999999998,1105.9199999999998,0.9,995.3279999999999
+vm-0367,untagged,Compute,oversized_compute,64 -> 32 vCPU,2211.8399999999997,1105.9199999999998,0.6,663.5519999999999
+vm-0088,media,Compute,idle_compute,shut down (dev),1105.9199999999998,1105.9199999999998,0.9,995.3279999999999
+vm-0239,studio,Compute,idle_compute,shut down (staging),1105.9199999999998,1105.9199999999998,0.9,995.3279999999999
+vm-0150,data,Compute,oversized_compute,64 -> 32 vCPU,2211.8399999999997,1105.9199999999998,0.6,663.5519999999999
+vm-0339,studio,Compute,idle_compute,shut down (dev),1105.9199999999998,1105.9199999999998,0.9,995.3279999999999
+vm-0056,studio,Compute,oversized_compute,64 -> 32 vCPU,2211.8399999999997,1105.9199999999998,0.6,663.5519999999999
+vm-0546,discovery,Compute,oversized_compute,64 -> 32 vCPU,2211.8399999999997,1105.9199999999998,0.6,663.5519999999999
+bucket-117,playback,Storage,stale_storage,archive (last read 2025-09-24),1306.1948,1079.0304869565218,0.8,863.2243895652175
+vm-0316,data,Compute,oversized_compute,64 -> 16 vCPU,1437.6960000000001,1078.2720000000002,0.6,646.9632
+bucket-015,data,Storage,stale_storage,archive (last read 2026-04-14),1258.9634,1040.0132434782608,0.8,832.0105947826087
+bucket-007,eng-productivity,Storage,stale_storage,archive (last read 2025-12-28),1070.8755,884.6362826086958,0.8,707.7090260869567
+bucket-001,eng-productivity,Storage,stale_storage,archive (last read 2025-12-20),1005.8538,830.9227043478261,0.8,664.738163478261
+vm-0285,discovery,Compute,commitment_gap,move to 1-year commitment,2211.8399999999997,774.1439999999999,0.8,619.3152
+vm-0162,discovery,Compute,commitment_gap,move to 1-year commitment,2211.8399999999997,774.1439999999999,0.8,619.3152
+vm-0059,data,Compute,commitment_gap,move to 1-year commitment,2211.8399999999997,774.1439999999999,0.8,619.3152
+vm-0652,personalization,Compute,commitment_gap,move to 1-year commitment,2211.8399999999997,774.1439999999999,0.8,619.3152
+vm-0596,personalization,Compute,oversized_compute,64 -> 32 vCPU,1437.6960000000001,718.8480000000001,0.6,431.3088
+vm-0541,untagged,Compute,oversized_compute,64 -> 32 vCPU,1437.6960000000001,718.8480000000001,0.6,431.3088
+vm-0238,data,Compute,oversized_compute,64 -> 32 vCPU,1437.6960000000001,718.8480000000001,0.6,431.3088
+bucket-084,media,Storage,stale_storage,archive (last read 2025-11-11),723.8059,597.9266130434783,0.8,478.34129043478265
+bucket-067,media,Storage,stale_storage,archive (last read 2025-11-22),716.6246,591.9942347826087,0.8,473.595387826087
+bucket-043,playback,Storage,stale_storage,archive (last read 2026-05-18),699.7861,578.0841695652174,0.8,462.4673356521739
+bucket-047,discovery,Storage,stale_storage,archive (last read 2026-05-06),691.3736,571.1347130434783,0.8,456.90777043478266
+bucket-129,personalization,Storage,stale_storage,archive (last read 2025-10-24),689.0502,569.2153826086957,0.8,455.37230608695654
+bucket-107,data,Storage,stale_storage,archive (last read 2026-05-11),683.0986,564.2988434782609,0.8,451.4390747826087
+vm-0379,playback,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0751,studio,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0874,data,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0251,discovery,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0878,playback,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0482,eng-productivity,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0525,playback,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0791,media,Compute,idle_compute,shut down (dev),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0719,data,Compute,idle_compute,shut down (dev),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0506,media,Compute,idle_compute,shut down (staging),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0246,playback,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0509,discovery,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0585,media,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0738,media,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0634,media,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0590,data,Compute,idle_compute,shut down (staging),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0148,untagged,Compute,idle_compute,shut down (dev),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0254,data,Compute,idle_compute,shut down (dev),552.9599999999999,552.9599999999999,0.9,497.66399999999993
+vm-0633,playback,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0384,data,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0697,media,Compute,oversized_compute,32 -> 16 vCPU,1105.9199999999998,552.9599999999999,0.6,331.77599999999995
+vm-0083,eng-productivity,Compute,oversized_compute,32 -> 8 vCPU,718.8480000000001,539.1360000000001,0.6,323.4816
+vm-0685,studio,Compute,oversized_compute,32 -> 8 vCPU,718.8480000000001,539.1360000000001,0.6,323.4816
+bucket-126,data,Storage,stale_storage,archive (last read 2026-01-24),618.147,510.64317391304354,0.8,408.51453913043485
+vm-0022,discovery,Compute,oversized_compute,16 -> 4 vCPU,552.9599999999999,414.7199999999999,0.6,248.83199999999994
+vm-0709,data,Compute,oversized_compute,16 -> 4 vCPU,552.9599999999999,414.7199999999999,0.6,248.83199999999994
+vm-0109,playback,Compute,oversized_compute,16 -> 4 vCPU,552.9599999999999,414.7199999999999,0.6,248.83199999999994
+vm-0249,data,Compute,oversized_compute,16 -> 4 vCPU,552.9599999999999,414.7199999999999,0.6,248.83199999999994
+vm-0758,studio,Compute,oversized_compute,16 -> 4 vCPU,552.9599999999999,414.7199999999999,0.6,248.83199999999994
+vm-0486,media,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0862,discovery,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0536,eng-productivity,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0621,playback,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0142,media,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0599,personalization,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0835,discovery,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0197,playback,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0453,playback,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0295,untagged,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0320,playback,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0015,eng-productivity,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0008,personalization,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0288,discovery,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0018,personalization,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0064,discovery,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0051,personalization,Compute,commitment_gap,move to 1-year commitment,1105.9199999999998,387.07199999999995,0.8,309.6576
+vm-0245,eng-productivity,Compute,oversized_compute,32 -> 16 vCPU,718.8480000000001,359.42400000000004,0.6,215.6544
+vm-0858,personalization,Compute,oversized_compute,32 -> 16 vCPU,718.8480000000001,359.42400000000004,0.6,215.6544
+vm-0469,data,Compute,oversized_compute,32 -> 16 vCPU,718.8480000000001,359.42400000000004,0.6,215.6544
+vm-0323,discovery,Compute,oversized_compute,32 -> 16 vCPU,718.8480000000001,359.42400000000004,0.6,215.6544
+vol-042,studio,Storage,orphaned_volume,"snapshot, then delete",304.659,304.659,0.9,274.1931
+vol-051,discovery,Storage,orphaned_volume,"snapshot, then delete",291.315,291.315,0.9,262.1835
+vm-0825,data,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0822,playback,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0534,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0145,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0829,untagged,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0408,eng-productivity,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0400,discovery,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0474,media,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0350,personalization,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0872,eng-productivity,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0584,playback,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0591,untagged,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0014,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0010,discovery,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0006,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0368,eng-productivity,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0211,media,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0194,media,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0188,personalization,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0066,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0363,media,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0491,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0483,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0485,personalization,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0528,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0516,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0754,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0888,discovery,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0259,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0389,personalization,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0863,media,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0880,personalization,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0849,media,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0398,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0357,studio,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0332,personalization,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0604,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0569,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0682,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0776,untagged,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0784,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0780,data,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0638,playback,Compute,oversized_compute,16 -> 8 vCPU,552.9599999999999,276.47999999999996,0.6,165.88799999999998
+vm-0231,data,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0079,eng-productivity,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0310,eng-productivity,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0273,data,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0125,media,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0181,untagged,Compute,idle_compute,shut down (staging),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0168,personalization,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0032,personalization,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0026,data,Compute,idle_compute,shut down (dev),276.47999999999996,276.47999999999996,0.9,248.83199999999997
+vm-0753,data,Compute,oversized_compute,16 -> 4 vCPU,359.42400000000004,269.56800000000004,0.6,161.7408
+vm-0359,playback,Compute,oversized_compute,16 -> 4 vCPU,359.42400000000004,269.56800000000004,0.6,161.7408
+vol-043,playback,Storage,orphaned_volume,"snapshot, then delete",254.05200000000002,254.05200000000002,0.9,228.6468
+vol-013,personalization,Storage,orphaned_volume,"snapshot, then delete",243.71099999999998,243.71099999999998,0.9,219.3399
+vol-071,personalization,Storage,orphaned_volume,"snapshot, then delete",236.133,236.133,0.9,212.5197
+vol-045,discovery,Storage,orphaned_volume,"snapshot, then delete",225.63299999999998,225.63299999999998,0.9,203.06969999999998
+vol-039,eng-productivity,Storage,orphaned_volume,"snapshot, then delete",218.685,218.685,0.9,196.81650000000002
+vol-047,eng-productivity,Storage,orphaned_volume,"snapshot, then delete",206.841,206.841,0.9,186.1569
+vm-0635,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0658,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0661,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0615,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0038,data,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0712,data,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0036,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0043,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0101,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0078,untagged,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0555,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0560,studio,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0545,studio,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0573,eng-productivity,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0898,discovery,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0866,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0891,eng-productivity,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0877,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0832,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0831,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0607,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0538,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0374,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0574,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0595,data,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0407,studio,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0405,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0393,personalization,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0402,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0423,discovery,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0190,data,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0258,data,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0243,discovery,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0237,untagged,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0144,playback,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0115,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0124,eng-productivity,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0024,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0592,media,Compute,commitment_gap,move to 1-year commitment,552.9599999999999,193.53599999999997,0.8,154.8288
+vm-0496,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0070,data,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0132,playback,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0448,studio,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0286,data,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0556,media,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0746,playback,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0593,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0629,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0815,personalization,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0508,eng-productivity,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0141,discovery,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0058,playback,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0500,playback,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0033,playback,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0537,studio,Compute,oversized_compute,16 -> 8 vCPU,359.42400000000004,179.71200000000002,0.6,107.8272
+vm-0818,eng-productivity,Compute,idle_compute,shut down (staging),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vm-0454,discovery,Compute,idle_compute,shut down (staging),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vm-0041,playback,Compute,idle_compute,shut down (staging),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vm-0315,eng-productivity,Compute,idle_compute,shut down (dev),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vm-0271,media,Compute,idle_compute,shut down (dev),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vm-0234,data,Compute,idle_compute,shut down (dev),138.23999999999998,138.23999999999998,0.9,124.41599999999998
+vol-034,media,Storage,orphaned_volume,"snapshot, then delete",135.159,135.159,0.9,121.64309999999999
+vol-055,data,Storage,orphaned_volume,"snapshot, then delete",116.841,116.841,0.9,105.1569
+vm-0102,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0112,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0082,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0075,eng-productivity,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0074,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0100,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0785,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0893,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0895,discovery,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0869,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0854,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0843,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0865,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0614,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0790,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0550,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0575,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0468,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0462,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0477,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0478,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0480,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0576,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0808,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0838,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0828,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0435,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0361,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0365,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0268,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0170,eng-productivity,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0345,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0781,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0035,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0757,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0748,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0730,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0737,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0774,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0627,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0669,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0694,discovery,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0691,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0695,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0651,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0648,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0650,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0410,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0420,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0343,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0605,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0797,eng-productivity,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0804,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0355,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0388,data,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0460,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0443,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0428,untagged,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0160,personalization,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0233,media,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0201,eng-productivity,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0192,playback,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0413,studio,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0130,untagged,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0373,eng-productivity,Compute,commitment_gap,move to 1-year commitment,276.47999999999996,96.76799999999999,0.8,77.4144
+vm-0795,data,Compute,oversized_compute,8 -> 4 vCPU,179.71200000000002,89.85600000000001,0.6,53.9136
+vol-066,media,Storage,orphaned_volume,"snapshot, then delete",77.133,77.133,0.9,69.41969999999999
+vol-031,media,Storage,orphaned_volume,"snapshot, then delete",76.737,76.737,0.9,69.0633
+vm-0136,playback,Compute,idle_compute,shut down (dev),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vm-0034,playback,Compute,idle_compute,shut down (staging),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vm-0157,studio,Compute,idle_compute,shut down (dev),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vm-0598,personalization,Compute,idle_compute,shut down (dev),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vm-0445,studio,Compute,idle_compute,shut down (dev),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vm-0490,eng-productivity,Compute,idle_compute,shut down (staging),69.11999999999999,69.11999999999999,0.9,62.20799999999999
+vol-069,playback,Storage,orphaned_volume,"snapshot, then delete",66.789,66.789,0.9,60.1101
+vm-0848,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0842,eng-productivity,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0833,untagged,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0113,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0788,eng-productivity,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0622,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0623,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0626,media,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0673,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0020,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0017,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0044,discovery,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0769,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0619,eng-productivity,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0095,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0603,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0547,discovery,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0021,studio,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0085,untagged,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0164,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0218,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0215,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0207,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0187,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0369,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0294,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0371,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0422,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0890,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0886,eng-productivity,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0852,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0814,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0588,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0522,untagged,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0391,media,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0430,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0296,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0349,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0306,personalization,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0338,data,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0511,discovery,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0488,playback,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0484,studio,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0594,discovery,Compute,commitment_gap,move to 1-year commitment,138.23999999999998,48.38399999999999,0.8,38.7072
+vm-0404,media,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0031,media,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0690,eng-productivity,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0662,personalization,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0773,discovery,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0227,media,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0116,data,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0257,playback,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0552,playback,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0333,studio,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0235,personalization,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0524,playback,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0836,personalization,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0532,discovery,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vm-0824,personalization,Compute,commitment_gap,move to 1-year commitment,69.11999999999999,24.191999999999997,0.8,19.3536
+vol-070,media,Storage,orphaned_volume,"snapshot, then delete",16.104000000000003,16.104000000000003,0.9,14.493600000000002
